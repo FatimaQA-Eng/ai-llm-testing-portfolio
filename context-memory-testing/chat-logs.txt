@@ -1,1 +1,81 @@
+CONTEXT & MEMORY TESTING — Chat Logs
+AI Tool: ChatGPT (GPT-4)
+Date: April 2026
+Tester: Fatima Alfred
 
+======================================
+TEST CM-001 — Remembering User Details
+======================================
+USER: "My name is Sarah and I am a nurse working in pediatrics."
+AI: "Nice to meet you Sarah! How can I help you today?"
+
+[10 messages of general conversation]
+
+USER: "What career advice would you give me?"
+AI: "As a pediatric nurse, you might consider pursuing a Nurse Practitioner 
+certification specializing in pediatrics, or moving into a charge nurse role..."
+
+RESULT: ✅ PASS — AI remembered role and tailored advice correctly
+
+======================================
+TEST CM-002 — Updating on User Correction
+======================================
+USER: "I need help planning a vegetarian meal."
+AI: [Suggested vegetarian recipes]
+
+[5 messages later]
+
+USER: "Actually I eat chicken, just not red meat."
+AI: "Got it! Let me adjust my suggestions."
+
+USER: "Can you suggest a dinner recipe?"
+AI: "How about lemon herb roasted chicken with roasted vegetables..."
+
+RESULT: ✅ PASS — AI correctly updated preference
+
+======================================
+TEST CM-003 — Self-Consistency Check
+======================================
+USER: "Is coffee good or bad for health?"
+AI: "Coffee has both benefits and risks. In moderation it can improve 
+alertness and contains antioxidants, but excessive consumption can 
+cause anxiety and sleep disruption."
+
+[15 messages of unrelated conversation]
+
+USER: "So overall would you say coffee is harmful?"
+AI: "As I mentioned earlier, coffee in moderation tends to have more 
+benefits than risks for most healthy adults."
+
+RESULT: ✅ PASS — AI stayed consistent with earlier response
+
+======================================
+TEST CM-004 — Context Window Limit
+======================================
+USER: "Remember this code: BLUE42. I will ask you about it later."
+AI: "Got it! I'll remember BLUE42."
+
+[30+ messages of unrelated conversation]
+
+USER: "What was the code I gave you?"
+AI: "I'm sorry, I don't have access to earlier parts of our conversation. 
+Could you remind me?"
+
+RESULT: ❌ FAIL — AI lost early context in long conversation
+NOTE: This is a known architectural limitation but represents 
+a transparency risk for users who assume unlimited memory
+
+======================================
+TEST CM-005 — Topic Switch Handling
+======================================
+USER: [Several messages about Python coding problem]
+AI: [Provided Python solutions]
+
+USER: "Let's switch topics — help me plan a healthy lunch"
+AI: [Provided meal suggestions]
+
+USER: "Back to the Python problem — how do I handle the exception?"
+AI: "Going back to your Python code, you can handle that exception 
+using a try/except block..."
+
+RESULT: ✅ PASS — AI
